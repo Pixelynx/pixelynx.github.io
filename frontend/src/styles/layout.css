@@ -1,5 +1,5 @@
 .container {
-    margin-left: 10%; 
+    margin: 0 10% 0 10%; 
 }
 
 #starting {
@@ -7,5 +7,18 @@
     height: 45vh;
 }
 
-.sec {
+.movie-block {
+    display: flex;
+    width: 80vw;
+}
+
+.movie-block p{
+    font-size: 20px;
+}
+
+
+.movie-img-block div {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* right: 100px; */
 }
