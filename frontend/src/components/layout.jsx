@@ -27,30 +27,54 @@ class Layout extends Component {
         ]
     }
 
+    detectResize = (e) => {
+        window.addEventListener('resize', function () {
+
+            console.log(window.innerWidth);
+        })
+    }
+
     displayMovies = () => {
         return this.state.movies.map(movie => {
-            return(
-                <>
-                    <Row id={movie.id === 1 || movie.id === 2 ? 'starting' : null} className={movie.id === 2 ? 'sec movie-block align-items-center ' : 'movie-block align-items-center'}>
-                        <Col className='movie-text-block' sm={{order:1, span:12}}  md={!(movie.id % 2) ? { order: 1, span:12 } : { order: 2, span:12 }}>
+            if (movie.id % 2) {
+                return (
+                    <Row id={movie.id == 1 || movie.id == 2 ? 'starting' : null} className='movie-block'>
+                        <Col className='movie-text-block' xs={12} md={12} lg={12} xl={{ order: 2 }}>
                             <b>{movie.title}</b>
                             <p>{movie.description}</p>
                         </Col>
-                        <Col className=' movie-img-block' sm={{order:2, span:12}} md={!(movie.id % 2) ? { order: 2 } : { order: 1 }}>
+
+                        <Col className=' movie-img-block' xs={12} md={12} lg={12} xl={{ order: 1 }}>
                             <div><img src={movie.img} /></div>
                         </Col>
-                        </Row>
-                </>
-            )
+
+                    </Row>
+                )
+            } else {
+                return (
+                    <Row id={movie.id == 1 || movie.id == 2 ? 'starting' : null} className='movie-block'>
+
+                        <Col className='movie-text-block' xs={12} md={12} lg={12} xl={{ order: 1 }}>
+                            <b>{movie.title}</b>
+                            <p>{movie.description}</p>
+                        </Col>
+
+                        <Col className=' movie-img-block' xs={12} md={12} lg={12} xl={{ order: 2 }}>
+                            <div><img src={movie.img} /></div>
+                        </Col>
+
+                    </Row>
+                )
+            }
         })
     }
 
     render() {
-        return(
+        return (
             <>
-            <Container>
-            {this.displayMovies()}
-            </Container>
+                <Container className='layout-container'>
+                    {this.displayMovies()}
+                </Container>
             </>
         )
     }
