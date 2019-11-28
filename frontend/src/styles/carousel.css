@@ -8,8 +8,22 @@
     justify-content: center;
 }
 
-.carousel-caption {
-    background-color: red;
+.carsl-img {
+    display: flex;
+    align-items: center;
+}
+
+.carsl-desc {
+    /* display: flex; */
+    /* align-self: center; */
+}
+
+.carsl-cap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    height: 80%;
 }
 
 .testImage {

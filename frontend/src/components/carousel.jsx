@@ -34,46 +34,41 @@ class CarouselComponent extends Component {
 
     render() {
         return(
-            <Carousel activeIndex='0'>
+            <Carousel >
                 <Carousel.Item>
                     <Row className='indv-carousel-item'>
-                        <Col xs sm lg xl={{ order: 1, span: 1 }}></Col>
 
-                        <Col xs sm lg xl={{ order: 2, span: 2 }}>
+                        <Col className='carsl-img' xs sm lg xl={{ order: 2, span: 3 }}>
                                 <img className='testImage' src={testImg} alt="image" />
                         </Col>
 
-                        <Col xs sm lg xl={{ order: 3, span: 5 }}>
-                            <Carousel.Caption className='carousel-caption'>
+                        <Col className='carsl-desc justify-content-center' xs sm lg xl={{ order: 3, span: 5 }}>
+                            <Carousel.Caption className='carsl-cap'>
                                 <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                                 <div><Button>Buy Now</Button>
                                 <Button>Watch Trailer</Button></div>
                             </Carousel.Caption>
                         </Col>
-
-                        <Col xs sm lg xl={{ order: 4, span: 1 }}></Col>
                         
                     </Row>
                 </Carousel.Item>
 
                 <Carousel.Item>
                     <Row className='indv-carousel-item'>
-                        <Col xs sm lg xl={{ order: 1, span: 1 }}></Col>
 
-                        <Col xs sm lg xl={{ order: 2 }}>
+                        <Col className='carsl-img' xs sm lg xl={{ order: 2, span: 3 }}>
                             <img className='testImage' src={testImg} alt="image" />
                         </Col>
-                        <Col xs sm lg xl={{ order: 3 }}>
-                            <Carousel.Caption className='carousel-caption'>
+
+                        <Col className='carsl-desc justify-content-center' xs sm lg xl={{ order: 3, span: 5 }}>
+                            <Carousel.Caption className='carsl-cap'>
                                 <h3>Second slide label</h3>
-                                <p>GINTAMA</p>
+                                <p>GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. GINTAMA. </p>
                                 <div><Button>Buy Now</Button>
-                                <Button>Watch Trailer</Button></div>
+                                    <Button>Watch Trailer</Button></div>
                             </Carousel.Caption>
                         </Col>
-
-                        <Col xs sm lg xl={{ order: 4, span: 1 }}></Col>
 
                     </Row>
                 </Carousel.Item>
