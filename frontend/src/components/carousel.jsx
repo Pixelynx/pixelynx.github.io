@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 
 
 import '../styles/carousel.css';
@@ -28,38 +28,52 @@ class CarouselComponent extends Component {
                 title: "Move 2",
                 description: "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters. Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm..."
             }
-        ]
+        ],
+
     }
 
     render() {
         return(
-            <Carousel>
+            <Carousel activeIndex='0'>
                 <Carousel.Item>
-                    <Row>
-                        <Col>
-                            <img className='' src={testImg} alt="image"/>
+                    <Row className='indv-carousel-item'>
+                        <Col xs sm lg xl={{ order: 1, span: 1 }}></Col>
+
+                        <Col xs sm lg xl={{ order: 2, span: 2 }}>
+                                <img className='testImage' src={testImg} alt="image" />
                         </Col>
-                        <Col>
+
+                        <Col xs sm lg xl={{ order: 3, span: 5 }}>
                             <Carousel.Caption className='carousel-caption'>
                                 <h3>First slide label</h3>
                                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <div><Button>Buy Now</Button>
+                                <Button>Watch Trailer</Button></div>
                             </Carousel.Caption>
                         </Col>
+
+                        <Col xs sm lg xl={{ order: 4, span: 1 }}></Col>
                         
                     </Row>
                 </Carousel.Item>
 
                 <Carousel.Item>
-                    <Row>
-                        <Col>
-                            <img src="" alt="image2" />
+                    <Row className='indv-carousel-item'>
+                        <Col xs sm lg xl={{ order: 1, span: 1 }}></Col>
+
+                        <Col xs sm lg xl={{ order: 2 }}>
+                            <img className='testImage' src={testImg} alt="image" />
                         </Col>
-                        <Col>
+                        <Col xs sm lg xl={{ order: 3 }}>
                             <Carousel.Caption className='carousel-caption'>
                                 <h3>Second slide label</h3>
-                                <p>Different text.</p>
+                                <p>GINTAMA</p>
+                                <div><Button>Buy Now</Button>
+                                <Button>Watch Trailer</Button></div>
                             </Carousel.Caption>
                         </Col>
+
+                        <Col xs sm lg xl={{ order: 4, span: 1 }}></Col>
 
                     </Row>
                 </Carousel.Item>
