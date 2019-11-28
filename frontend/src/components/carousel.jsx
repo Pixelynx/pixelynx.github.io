@@ -32,17 +32,21 @@ class CarouselComponent extends Component {
 
     }
 
+    displayCarouselItems = () => {
+        
+    }
+
     render() {
         return(
             <Carousel >
                 <Carousel.Item>
                     <Row className='indv-carousel-item'>
 
-                        <Col className='carsl-img' xs sm lg xl={{ order: 2, span: 3 }}>
+                        <Col className='carsl-img' xs sm lg xl={{ order: 1, span: 3 }}>
                                 <img className='testImage' src={testImg} alt="image" />
                         </Col>
 
-                        <Col className='carsl-desc justify-content-center' xs sm lg xl={{ order: 3, span: 5 }}>
+                        <Col className='carsl-desc justify-content-center' xs sm lg xl={{ order: 2, span: 5 }}>
                             <Carousel.Caption className='carsl-cap'>
                                 <h3>First slide label</h3>
                                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
