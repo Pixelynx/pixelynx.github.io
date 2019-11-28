@@ -1,0 +1,8 @@
+.carousel {
+    height: 65vh;
+    background-color: pink;
+}
+
+.carousel-caption {
+    background-color: red;
+}
