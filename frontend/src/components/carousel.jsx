@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import { Button, Row, Col } from 'react-bootstrap';
 
@@ -32,11 +33,19 @@ class CarouselComponent extends Component {
 
     }
 
+    retriveMovies = () => {
+        axios.get('https://api.vimeo.com/ondemand/genres/13')
+            .then(res => {
+                console.log(res.data)
+            })
+    }
+
     displayCarouselItems = () => {
         
     }
 
     render() {
+        this.retriveMovies()
         return(
             <Carousel >
                 <Carousel.Item>
