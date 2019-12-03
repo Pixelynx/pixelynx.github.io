@@ -8,6 +8,10 @@ import '../styles/carousel.css';
 
 const testImg = 'https://i1.wp.com/the-avocado.org/wp-content/uploads/2018/12/Legendary-Gintama-Manga-Giga-Magazine-Debut-938x534-2.jpg?resize=938%2C534&ssl=1';
 
+const client = '3fbb58c54de613941453b8fbcca97d85a2665b35';
+const token = 'LRNvYuIp1letA+TGu9/uiJ9U8FAjVtf0dfGPeLcBrtEEXAqqz1GwYtY6paHKwK5I8xOdl4RhNkNQZJdq9Y+S1DfcAgK7G0NVZ2X7tAqQJ4d8Tz2SXB2Mye6NDMGnmU8J';
+
+
 class CarouselComponent extends Component {
     state = {
         carouselMovies: [
@@ -34,7 +38,20 @@ class CarouselComponent extends Component {
     }
 
     componentDidMount = () => {
-        axios.post()
+        let data = JSON.stringify({
+            "grant_type": "client_credentials",
+            "scope": "public"
+        })
+        axios.post('https://api.vimeo.com/oauth/authorize/client', data, {
+            headers: {
+                'Authorization': 'basic ' + Buffer.from(client + ":" + token).toString('base64'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.vimeo.*+json;version=3.4'
+            }
+        })
+            .then(res => {
+                debugger
+            })
     }
 
     retriveMovies = () => {
@@ -49,7 +66,7 @@ class CarouselComponent extends Component {
     }
 
     render() {
-        this.retriveMovies()
+        // this.retriveMovies()
         return(
             <Carousel activeIndex='0'>
                 <Carousel.Item>
@@ -59,9 +76,9 @@ class CarouselComponent extends Component {
                                 <img className='testImage' src={testImg} alt="image" />
                         </Col>
 
-                        <Col xs={{ order: 2, span: 1 }} sm={{ order: 2, span: 1 }} lg={{ order: 2, span: 1 }} xl={{ order: 2, span: 1 }}></Col>
+                        <Col xs={{ order: 2, span: 1 }} sm={{ order: 3, span: 12 }} lg={{ order: 2, span: 1 }} xl={{ order: 2, span: 1 }}></Col>
 
-                        <Col className='carsl-desc justify-content-center' xs={{ order: 3, span: 3 }} sm={{ order: 3, span: 5 }} lg={{ order: 3, span: 5 }} xl={{ order: 3, span: 5 }}>
+                        <Col className='carsl-desc justify-content-center' xs={{ order: 3, span: 10 }} sm={{ order: 2, span: 12 }} lg={{ order: 3, span: 5 }} xl={{ order: 3, span: 5 }}>
                             <Carousel.Caption className='carsl-cap'>
                                 <h3>First slide label</h3>
                                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
