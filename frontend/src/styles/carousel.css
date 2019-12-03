@@ -6,6 +6,7 @@
 .indv-carousel-item {
     display: flex;
     justify-content: center;
+    height: 65vh;
 }
 
 .carsl-img {

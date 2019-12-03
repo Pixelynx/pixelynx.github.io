@@ -51,15 +51,17 @@ class CarouselComponent extends Component {
     render() {
         this.retriveMovies()
         return(
-            <Carousel >
+            <Carousel activeIndex='0'>
                 <Carousel.Item>
                     <Row className='indv-carousel-item'>
-
-                        <Col className='carsl-img' xs sm lg xl={{ order: 1, span: 3 }}>
+                        {/* XS && SM -- NEED TO ONLY DISPLAY TITLE BUTTONS AND IMAGE */}
+                        <Col className='carsl-img' xs={{ order: 1, span: 3 }} sm={{ order: 1, span: 3 }} lg={{ order: 1, span: 3 }} xl={{ order: 1, span: 3 }}>
                                 <img className='testImage' src={testImg} alt="image" />
                         </Col>
 
-                        <Col className='carsl-desc justify-content-center' xs sm lg xl={{ order: 2, span: 5 }}>
+                        <Col xs={{ order: 2, span: 1 }} sm={{ order: 2, span: 1 }} lg={{ order: 2, span: 1 }} xl={{ order: 2, span: 1 }}></Col>
+
+                        <Col className='carsl-desc justify-content-center' xs={{ order: 3, span: 3 }} sm={{ order: 3, span: 5 }} lg={{ order: 3, span: 5 }} xl={{ order: 3, span: 5 }}>
                             <Carousel.Caption className='carsl-cap'>
                                 <h3>First slide label</h3>
                                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
