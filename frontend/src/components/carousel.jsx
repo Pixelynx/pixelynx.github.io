@@ -33,6 +33,10 @@ class CarouselComponent extends Component {
 
     }
 
+    componentDidMount = () => {
+        axios.post()
+    }
+
     retriveMovies = () => {
         axios.get('https://api.vimeo.com/ondemand/genres/13')
             .then(res => {
