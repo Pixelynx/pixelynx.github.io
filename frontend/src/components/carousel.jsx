@@ -49,9 +49,7 @@ class CarouselComponent extends Component {
                 'Accept': 'application/vnd.vimeo.*+json;version=3.4'
             }
         })
-            .then(res => {
-                debugger
-            })
+        console.log('SUCCESS!')
     }
 
     retriveMovies = () => {
