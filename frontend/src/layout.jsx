@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import CarouselComponent from './carousel';
+import CarouselComponent from './carousel/carouselComponent';
 
-import '../styles/layout.css';
+import './styles/layout.css';
 
 class Layout extends Component {
     state = {
@@ -39,7 +39,7 @@ class Layout extends Component {
         return this.state.movies.map(movie => {
             if (movie.id % 2) {
                 return (
-                    <Row key={movie.id} id={movie.id == 1 || movie.id == 2 ? 'starting' : null} className={movie.id == 1 ? 'top-item movie-block justify-content-center justify-content-xl-start' : 'movie-block nxt-movies justify-content-center justify-content-xl-start'}>
+                    <Row key={movie.id} id={movie.id === 1 || movie.id === 2 ? 'starting' : null} className={movie.id === 1 ? 'top-item movie-block justify-content-center justify-content-xl-start' : 'movie-block nxt-movies justify-content-center justify-content-xl-start'}>
 
                         <Col className='movie-text-block' xs={11} md={11} lg={{order: 1, span: 10 }} xl={{ order: 2, span: 5}}>
                             <b id='movie-title'>{movie.title}</b>
@@ -50,7 +50,7 @@ class Layout extends Component {
                         align-items-center 
                         justify-content-xl-end justify-content-center' xs={12} md={12} lg={{ order: 2, span: 11 }} xl={{ order: 1, span: 6}}>
                             
-                                    <img id='movie-img' src={movie.img} alt={`Picture for the movie ${movie.title}`} />
+                                    <img id='movie-img' src={movie.img} alt={`${movie.title}`} />
                                     
                         </Col>
 
@@ -58,7 +58,7 @@ class Layout extends Component {
                 )
             } else {
                 return (
-                    <Row key={movie.id} id={movie.id == 1 || movie.id == 2 ? 'starting' : null} className={movie.id == 2 ? 'second-item nxt-movies movie-block justify-content-center' : 'movie-block nxt-movies justify-content-center'}>
+                    <Row key={movie.id} id={movie.id === 1 || movie.id === 2 ? 'starting' : null} className={movie.id === 2 ? 'second-item nxt-movies movie-block justify-content-center' : 'movie-block nxt-movies justify-content-center'}>
 
                         <Col className='movie-text-block' xs={11} md={11} lg={{ order: 1, span: 10 }} xl={{ order: 1, span: 5 }}>
                             <b id='movie-title'>{movie.title}</b>
@@ -67,7 +67,7 @@ class Layout extends Component {
 
                         <Col className='movie-img-block align-items-center justify-content-xl-start justify-content-center' xs={12} md={12} lg={{ order: 2, span: 11 }} xl={{ order: 2, span: 5 }}>
                             <img
-                                  id='movie-img' src={movie.img} alt={`Picture for the movie ${movie.title}`} />
+                                  id='movie-img' src={movie.img} alt={`${movie.title}`} />
                         </Col>
 
                     </Row>
