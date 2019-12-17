@@ -10,20 +10,8 @@ import BuyIcon from '../imgs/vimeo_buy_icon.png';
 const clientID = '3fbb58c54de613941453b8fbcca97d85a2665b35';
 const secret = 'LRNvYuIp1letA+TGu9/uiJ9U8FAjVtf0dfGPeLcBrtEEXAqqz1GwYtY6paHKwK5I8xOdl4RhNkNQZJdq9Y+S1DfcAgK7G0NVZ2X7tAqQJ4d8Tz2SXB2Mye6NDMGnmU8J';
 const token = 'b3805de5e91ae298edd4a695e0b62a7b';
-const accept = 'application/vnd.vimeo.*+json;version=3.4';
-const redirect = '/apps/161170';
-const state = 4;
-let client = new Vimeo(clientID, secret, token);
 
-// import {
-//     RatFilmPoster,
-//     RatFilmPosterFilt,
-//     WorldOfTmrwPoster,
-//     WorldOfTmrwPosterFilt,
-//     KediPoster,
-//     KediPosterFilt,
-//     BuyIcon
-// } from './carouselImgs';
+let client = new Vimeo(clientID, secret, token);
 
 class CarouselComponent extends Component {
     state = {
@@ -31,61 +19,20 @@ class CarouselComponent extends Component {
         ],
     }
 
-    componentDidMount = async () => {
-
+    componentDidMount = async() => {
         client.request({
             method: 'GET',
-            path: '/tutorial'
-        }, function (error, body, status_code, headers) {
+            path: '/tags/cats/videos'
+        }, (error, body, status_code, headers) => {
             if (error) {
                 console.log(error);
             }
-
-            console.log(body);
+            let videos = body.data.map(video => {
+                return video;
+            })
+            this.setState({ carouselContent: videos })
         })
-
-    }
-
-    getCliData = () => {
-        let auth = 'basic ' + Buffer.from(client + ":" + secret).toString('base64');
-        let cliData = JSON.stringify({
-            "grant_type": "client_credentials",
-            "scope": "public"
-        })
-        return (
-            axios.post('https://api.vimeo.com/oauth/authorize/client', cliData, {
-                headers: {
-                    'Authorization': `${auth}`,
-                    'Content-Type': 'application/json',
-                    'Accept': `${accept}`
-                }
-            }).catch(err => console.log(err.message))
-                .then(res => {
-                    axios.get(`https://api.vimeo.com/oauth/authorize?response_type=code&client_id=${client}&redirect_uri=${res.request.response.uri}&state=${state}&scope=public`)
-                })
-        )
-    }
-
-    getAccData = () => {
-        let code = "basic M2ZiYjU4YzU0ZGU2MTM5NDE0NTNiOGZiY2NhOTdkODVhMjY2NWIzNTpMUk52WXVJcDFsZXRBK1RHdTkvdWlKOVU4RkFqVnRmMGRmR1BlTGNCcnRFRVhBcXF6MUd3WXRZNnBhSEt3SzVJOHhPZGw0UmhOa05RWkpkcTlZK1MxRGZjQWdLN0cwTlZaMlg3dEFxUUo0ZDhUejJTWEIyTXllNk5ETUdubVU4Sg==";
-        let accData = JSON.stringify({
-            "grant_type": "authorization_code",
-            "code": `${code}`,
-            "redirect_uri": `${redirect}`
-        })
-        return (
-            axios.post('https://api.vimeo.com/oauth/access_token', accData, {
-                headers: {
-                    'Authorization': `${code}`,
-                    'Content-Type': 'application/json',
-                    'Accept': `${accept}`
-                }
-            }).catch(err => console.log('ACCESS ERROR: ', err.message))
-                .then(res => {
-                    debugger
-                    return res.data
-                })
-        )
+        console.log(this.state)
     }
 
     retriveMovies = () => {
@@ -140,10 +87,55 @@ class CarouselComponent extends Component {
     render() {
         return (
             <Carousel>
-                {this.displayCarouselContent()}
+                {/* {this.displayCarouselContent()} */}
             </Carousel>
         )
     }
 }
 
 export default CarouselComponent;
+
+
+// const accept = 'application/vnd.vimeo.*+json;version=3.4';
+// const redirect = '/apps/161170';
+// const state = 4;
+// getCliData = () => {
+//     let auth = 'basic ' + Buffer.from(client + ":" + secret).toString('base64');
+//     let cliData = JSON.stringify({
+//         "grant_type": "client_credentials",
+//         "scope": "public"
+//     })
+//     return (
+//         axios.post('https://api.vimeo.com/oauth/authorize/client', cliData, {
+//             headers: {
+//                 'Authorization': `${auth}`,
+//                 'Content-Type': 'application/json',
+//                 'Accept': `${accept}`
+//             }
+//         }).catch(err => console.log(err.message))
+//             .then(res => {
+//                 axios.get(`https://api.vimeo.com/oauth/authorize?response_type=code&client_id=${client}&redirect_uri=${res.request.response.uri}&state=${state}&scope=public`)
+//             })
+//     )
+// }
+
+// getAccData = () => {
+//     let code = "basic M2ZiYjU4YzU0ZGU2MTM5NDE0NTNiOGZiY2NhOTdkODVhMjY2NWIzNTpMUk52WXVJcDFsZXRBK1RHdTkvdWlKOVU4RkFqVnRmMGRmR1BlTGNCcnRFRVhBcXF6MUd3WXRZNnBhSEt3SzVJOHhPZGw0UmhOa05RWkpkcTlZK1MxRGZjQWdLN0cwTlZaMlg3dEFxUUo0ZDhUejJTWEIyTXllNk5ETUdubVU4Sg==";
+//     let accData = JSON.stringify({
+//         "grant_type": "authorization_code",
+//         "code": `${code}`,
+//         "redirect_uri": `${redirect}`
+//     })
+//     return (
+//         axios.post('https://api.vimeo.com/oauth/access_token', accData, {
+//             headers: {
+//                 'Authorization': `${code}`,
+//                 'Content-Type': 'application/json',
+//                 'Accept': `${accept}`
+//             }
+//         }).catch(err => console.log('ACCESS ERROR: ', err.message))
+//             .then(res => {
+//                 debugger
+//             })
+//     )
+// }
