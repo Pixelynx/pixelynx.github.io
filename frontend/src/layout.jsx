@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CarouselComponent from './carousel/carouselComponent';
+import TempCarousel from './carousel/tempCarousel';
 
 import './styles/layout.css';
 
@@ -82,7 +83,8 @@ class Layout extends Component {
                 <Container className='layout-container'>
                     {this.displayMovies()}
                 </Container>
-                <CarouselComponent />
+                {/* <CarouselComponent /> */}
+                <TempCarousel />
             </>
         )
     }
